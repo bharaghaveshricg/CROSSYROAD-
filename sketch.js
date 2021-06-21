@@ -4,40 +4,30 @@ var carGroup1,logGroup1;
 var grassHeight = 100;
 var gameState = "play";
 var player;
-var carAnimation, logAnimation, playerAnimation;
-var school;
 
-//function to load images, animation, sounds, etc..
+
 function preload()
 {
 
 }
 
-//setup function
 function setup() {
 
-  //creating the canvas
   createCanvas(displayWidth,700);
 
-  //creating carGroup1 and logGroup1
   carGroup1 = new Group();
   logGroup1 = new Group();
 
-  //creating player object of Player class
   player = new Player(width/2, height-25);
 
  }
 
- // draw function
 function draw() {
 
-  //giving background color as skyblue
   background("skyblue");
 
-  //moving the player with screen
   translate(0,-player.spt.y+height-150);
  
-  //creating Grasses for player's rest
  for (var i = 0; i < 6; i++){
 
    var bottomGrass1 = createSprite(683,height-50-(i*400),width,grassHeight);
@@ -49,19 +39,16 @@ function draw() {
    bottomGrass1.shapeColor = "green";
  }
 
-//creating car rows
 for (var i = 0; i < 40; i++){
   cars = new Car(2);
   carGroup1.add(cars.spt);
 }
 
-//creating log rows
 for (var i = 0; i < 40; i++){
   logs = new Log(2);
   logGroup1.add(logs.spt);
 }
 
-//making the logs reappear
 for (i = 1; i < logGroup1.length; i++){
    if (logGroup1[i].x < 0)
    {
@@ -69,7 +56,6 @@ for (i = 1; i < logGroup1.length; i++){
    }
   }  
 
-//making the cars reappear 
 for (i = 1; i < carGroup1.length; i++){
     if (carGroup1[i].x < 0)
     {
@@ -78,15 +64,12 @@ for (i = 1; i < carGroup1.length; i++){
 
 }
 
-//calling fubnction keyPressed
 keyPressed();
 
-//drawing all the sprites
 drawSprites();
 
 }
 
-//keyPressed function;
 function keyPressed()
 {
   if(keyCode == UP_ARROW){
